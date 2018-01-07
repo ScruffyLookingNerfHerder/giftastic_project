@@ -61,22 +61,7 @@ function displaygifs() {
       //pushes whole individual gif div to the DOM
       $("#gif-field").prepend(individualgifdiv);
 
-      $(".gifs").on("click", function() {
-        //grab the state attribute which we set earlier
-        var state = $(this).attr("data-state");
-        //if state is set to still
-        if (state === "still") {
-          $(this).attr("src", $(this).attr("data-animate"));
-          $(this).attr("data-state", "animate");
-          console.log("init");
-        }
-        //if state is set to animate
-        else {
 
-          $(this).attr("src", $(this).attr("data-still"));
-          $(this).attr("data-state", "still");
-        }
-      });
     }
 
   });
@@ -84,6 +69,25 @@ function displaygifs() {
 }
 
 
+
+function animation(){
+
+    // event.preventDefault();
+    //grab the state attribute which we set earlier
+    var state = $(this).attr("data-state");
+    //if state is set to still
+    if (state === "still") {
+      $(this).attr("src", $(this).attr("data-animate"));
+      $(this).attr("data-state", "animate");
+    }
+    //if state is set to animate
+    else {
+
+      $(this).attr("src", $(this).attr("data-still"));
+      $(this).attr("data-state", "still");
+    }
+
+};
 
 
 //on click event for submit button
@@ -98,5 +102,6 @@ $("#find-gif").on("click", function(event) {
 
 
 $(document).on("click", ".character-button", displaygifs);
+$(document).on("click", ".gifs", animation);
 
 createbuttons();
