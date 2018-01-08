@@ -1,16 +1,17 @@
+//original button array
 var characters = ["Aria Stark", "Aragorn", "Admiral Ackbar", "Brienne of Tarth", "Boromir", "Boba Fett", "Cersei Lannister", "Legolas", "C3P0", "Davos Seaworth", "Gandalf", "Darth Vader"];
 
 
-
+//function to create buttons
 function createbuttons() {
-//empties the buttons
+  //empties the buttons
   $("#gif-buttons").empty();
   //loops through character array
   for (var i = 0; i < characters.length; i++) {
     //creates a button for each character
     var a = $("<button>");
     //adds class to each button for styling
-    a.addClass("character-button");
+    a.addClass("character-button buttonclass");
     //gives each button data-attribute of the character's name
     a.attr("data-name", characters[i]);
     //prints the character name on the button
@@ -41,7 +42,7 @@ function displaygifs() {
       //sets individual div for each gif returned and gives it a class
       var individualgifdiv = $("<div class = 'individual-gifs'>");
       //gets the rating from the results
-      var rating = results[i].rating;
+      var rating = results[i].rating.toUpperCase();
       //prints the rating
       var r = $("<p>").text("Rating: " + rating);
       //creates an img class for each gif
@@ -59,7 +60,7 @@ function displaygifs() {
       //prepends the gif above the rating
       individualgifdiv.prepend(gifs);
       //pushes whole individual gif div to the DOM
-      $("#gif-field").prepend(individualgifdiv);
+      $("#gif-field").append(individualgifdiv);
 
 
     }
@@ -70,22 +71,19 @@ function displaygifs() {
 
 
 
-function animation(){
-
-    // event.preventDefault();
-    //grab the state attribute which we set earlier
-    var state = $(this).attr("data-state");
-    //if state is set to still
-    if (state === "still") {
-      $(this).attr("src", $(this).attr("data-animate"));
-      $(this).attr("data-state", "animate");
-    }
-    //if state is set to animate
-    else {
-
-      $(this).attr("src", $(this).attr("data-still"));
-      $(this).attr("data-state", "still");
-    }
+function animation() {
+  //grab the state attribute which we set earlier
+  var state = $(this).attr("data-state");
+  //if state is set to still
+  if (state === "still") {
+    $(this).attr("src", $(this).attr("data-animate"));
+    $(this).attr("data-state", "animate");
+  }
+  //if state is set to animate
+  else {
+    $(this).attr("src", $(this).attr("data-still"));
+    $(this).attr("data-state", "still");
+  }
 
 };
 
@@ -99,9 +97,18 @@ $("#find-gif").on("click", function(event) {
 
 });
 
+//on click event for clear button
+$("#clear-field").on("click", function(event) {
+  //ensures any user-created buttons are not deleted
+  event.preventDefault();
+  //empties the div field
+  $("#gif-field").empty();
+})
 
 
+//on click event to display gifs when button is pressed
 $(document).on("click", ".character-button", displaygifs);
+//on click event to animate gis when clicked on
 $(document).on("click", ".gifs", animation);
-
+//calls function to create buttons
 createbuttons();

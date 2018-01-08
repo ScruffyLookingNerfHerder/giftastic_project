@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,25 +10,28 @@
 
   <title>GIFted</title>
 </head>
-<body>
-  <h1> GIF Provider! </h1>
-  <div id="gif-buttons"> </div>
 
+<body>
+  <!--Header  -->
+  <div class="header">
+    <h1 class="title"> GIF Provider! </h1>
+    <h1 class="subtitle"> Powered by GIPHY </h1>
+    <div id="gif-buttons"> </div>
+  </div>
+<!--Input field for user input  -->
   <div id="input-field">
     <form id="gif-form">
-      <label for="gif-input">Add Your Own Button!</label>
-      <input type="text" id="gif-input"><br>
-
-      <!-- This button will trigger our AJAX call -->
-      <input id="find-gif" type="submit" value="Gif Add">
+      <label class="input-field-title" for="gif-input">Add Your Own Button!</label>
+      <input type="text" id="gif-input" placeholder="Add a Character!"><br>
+      <input id="find-gif" type="submit" value="Gif Add" class="buttonclass">
+      <button id="clear-field" class="buttonclass"> Clear! </button>
     </form>
+<!--Gif display field  -->
   </div>
   <div id="gif-field"></div>
 
 </body>
-<script
-  src="https://code.jquery.com/jquery-3.2.1.js"
-  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-  crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="Assets/JS/logic.js" /> </script>
+
 </html>
