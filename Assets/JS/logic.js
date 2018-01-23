@@ -9,15 +9,15 @@ function createbuttons() {
   //loops through character array
   for (var i = 0; i < characters.length; i++) {
     //creates a button for each character
-    var a = $("<button>");
+    var ogcharacters = $("<button>");
     //adds class to each button for styling
-    a.addClass("character-button buttonclass");
+    ogcharacters.addClass("character-button buttonclass");
     //gives each button data-attribute of the character's name
-    a.attr("data-name", characters[i]);
+    ogcharacters.attr("data-name", characters[i]);
     //prints the character name on the button
-    a.text(characters[i]);
+    ogcharacters.text(characters[i]);
     //pushes the button to the DOM and appends
-    $("#gif-buttons").append(a);
+    $("#gif-buttons").append(ogcharacters);
 
   }
 
